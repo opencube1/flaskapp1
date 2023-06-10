@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Your Machine Learning App</title>
+    </head>
+    
+    <body>
+        <form name="form", method="POST", style="text-align: center;">
+            <br>
+            Postcode: <input type="text" name="height", placeholder="Enter Postcode" required/>
+            <button>Begin</button>
+            <br><br>
+            <select id = 'option' name="option" >
+                {% for option in adress_list %}
+                <option value="{{ option }}">{{ option }}</option>
+                {% endfor %}
+            </select>
+            <button>Run</button>
+        </form>
+        <h1>Flask Pandas DataFrame</h1>
+        {{ table_html | safe }}
+    </body>
+</html>
