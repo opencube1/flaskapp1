@@ -15,7 +15,7 @@ def main():
         PC = request.form.get("height")
         
         
-        df = pd.read_csv("../PSD.csv")
+        df = pd.read_csv("PSD.csv")
         column_names=  ["Unique","Price",'Date',"Postcode",'Property_Type','Old_New','Duration','PAON','SAON','Street','Locality','Town_City','District','County','PPD','RecordStatus']
         df.columns = column_names
         df['Date'] = pd.to_datetime(df['Date'])
