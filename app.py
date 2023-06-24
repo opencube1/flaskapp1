@@ -14,10 +14,18 @@ def main():
         # Get values through input bars
         PC = request.form.get("height")
         
+        #Read data Frame
+        df = pd.read_csv(r"C:\Users\ASUS\Desktop\OpenCube\App\PSD.csv")
         
+<<<<<<< Updated upstream:app.py
         df = pd.read_csv("PSD.csv")
+=======
+        #Assign column names
+>>>>>>> Stashed changes:main.py
         column_names=  ["Unique","Price",'Date',"Postcode",'Property_Type','Old_New','Duration','PAON','SAON','Street','Locality','Town_City','District','County','PPD','RecordStatus']
         df.columns = column_names
+        
+        #Filtering Process
         df['Date'] = pd.to_datetime(df['Date'])
         df['Adress'] = df['PAON'].fillna('') +'  ' + df['Street'].fillna('') + '  ' + df['Locality'].fillna('') + '  ' + df['Town_City'].fillna('')
         df['Unique_House'] = df['PAON'].astype(str) + df['Postcode'].astype(str)
@@ -31,6 +39,8 @@ def main():
         df.loc[df['Duration'] == 'L','Duration'] = 'Leasehold'
         adress_list = df[df['Postcode']==PC]['Adress']
         adress_list = list(dict.fromkeys(adress_list))
+        
+        
         opt = request.form.get("option")
         target = df[df['Adress']==opt][['Date','Property Type','Price','Duration']]
         target['Date'] = pd.to_datetime(target['Date'])
@@ -41,6 +51,7 @@ def main():
         
     else:
         return render_template("website.html", adress_list=adress_list)
+
         
         
     

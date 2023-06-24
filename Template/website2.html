@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Flask App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 20px;
+        }
+        
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        
+        form {
+            margin-top: 20px;
+            text-align: center;
+        }
+        
+        input[type="text"] {
+            width: 200px;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        
+        select {
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        
+        button {
+            padding: 10px 20px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        table {
+            margin-top: 20px;
+            border-collapse: collapse;
+            width: 100%;
+        }
+        
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        th {
+            background-color: #333;
+            color: #fff;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Flask App</h1>
+    <form name="form" method="POST">
+        <label for="height">Enter a postcode:</label>
+        <input type="text" name="height" id="height" required>
+        <button>Begin</button>
+        <br>
+        
+        <label for="option">Select an address:</label>
+        <select name="option" id="option" required>
+            {% for address in adress_list %}
+            <option value="{{ option }}">{{ option }}</option>
+            {% endfor %}
+        </select>
+        
+        <br>
+        
+        <button>Submit</button>
+    </form>
+    
+    {% if table_html %}
+    <table>
+        <tr>
+            <th>Date</th>
+            <th>Property Type</th>
+            <th>Price</th>
+            <th>Duration</th>
+        </tr>
+        {{ table_html|safe }}
+    </table>
+    {% endif %}
+</body>
+</html>
